@@ -1,0 +1,313 @@
+<html><head>
+<meta name="viewport" content="width=device-width,user-scalable=no">
+
+    <title>RadioCalabriaMiaWeb</title>
+
+    <style>
+#drag-container img:hover {
+        width: 200px;
+        -webkit-transition: all 2s ease;
+        -moz-transition: all 2s ease;
+        -ms-transition: all 2s ease;
+        transition: all 2s ease;
+        height: 200px;}
+      html,
+      body {
+        height: 600px;
+        /* for touch screen */
+        touch-action: none;
+		background: transparent;
+      }
+      body {
+        overflow: hidden;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        background: #111;
+        -webkit-perspective: 900px;
+        perspective: 900px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+		background: transparent;
+      }
+
+      #drag-container,
+      #spin-container {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin: auto;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transform: rotateX(-10deg);
+        transform: rotateX(-10deg);
+      }
+
+      #drag-container img,
+      #drag-container video {
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 110%;
+        height: 100%;
+        line-height: 400px;
+        font-size: 50px;
+        text-align: center;
+        -webkit-box-shadow: 0 0 50px #7fffd4;
+        box-shadow: 0 0 50px #7fffd4;
+        -webkit-box-reflect: below 10px
+          linear-gradient(transparent, transparent, #0005);
+      }
+
+      #drag-container img:hover,
+      #drag-container video:hover {
+        -webkit-box-shadow: 0 0 55px #6495ed;
+        box-shadow: 0 0 55px #6495ed;
+        -webkit-box-reflect: below 10px
+          linear-gradient(transparent, transparent, #0007);
+      }
+
+      #drag-container p {
+        font-family: 'Anton', sans-serif;
+        position: absolute;
+
+        top: 100%;
+        left: 60px;
+        -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+        transform: translate(-50%, -50%) rotateX(90deg);
+        color: rgb(255, 145, 0);
+      }
+
+      #ground {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+        transform: translate(-50%, -50%) rotateX(90deg);
+        background: -webkit-radial-gradient(
+          center center,
+          farthest-side,
+          #9993,
+          transparent
+        );
+      }
+
+      #music-container {
+        position: absolute;
+        top: -100px;
+        left: 0;
+      }
+
+      @-webkit-keyframes spin {
+        from {
+          -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+        }
+        to {
+          -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+        }
+      }
+
+      @keyframes spin {
+        from {
+          -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+        }
+        to {
+          -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+        }
+      }
+      @-webkit-keyframes spinRevert {
+        from {
+          -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+        }
+        to {
+          -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+        }
+      }
+      @keyframes spinRevert {
+        from {
+          -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+        }
+        to {
+          -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="drag-container" style="transform: rotateX(-22.9233deg) rotateY(71.5787deg);">
+      <div id="spin-container" style="width: 120px; height: 170px; animation: 60s linear 0s infinite normal none running spinRevert;">
+    <!-- Add your images (or video) here -->
+        <img src="https://i.postimg.cc/mgFKycNJ/249263845-4621939234529476-7499283339199103753-n.jpg" alt="" style="transform: rotateY(0deg) translateZ(330px); transition: transform 1s ease 3.25s;">
+        <img src="https://i.postimg.cc/9Q60L737/hhhhhhhhh.png" alt="" style="transform: rotateY(27.6923deg) translateZ(330px); transition: transform 1s ease 3s;">
+        <img src="https://i.postimg.cc/pVjHB6Wq/aaaaaaaaaaa.png" alt="" style="transform: rotateY(55.3846deg) translateZ(330px); transition: transform 1s ease 2.75s;">
+        <img src="https://i.postimg.cc/N0GX6XRk/279867414-3170119569929881-4535755222314818642-n.jpg" alt="" style="transform: rotateY(83.0769deg) translateZ(330px); transition: transform 1s ease 2.5s;">
+        <img src="https://i.postimg.cc/hPSKP0ns/ddddddddddddddd.png" alt="" style="transform: rotateY(110.769deg) translateZ(330px); transition: transform 1s ease 2.25s;">
+        <img src="https://i.postimg.cc/pT3bQD59/1680642122.png" alt="" style="transform: rotateY(138.462deg) translateZ(330px); transition: transform 1s ease 2s;">
+        <img src="https://i.postimg.cc/2SD3W5zw/image.png" alt="" style="transform: rotateY(166.154deg) translateZ(330px); transition: transform 1s ease 1.75s;">
+        <img src="https://i.postimg.cc/25Q3qSqN/yfyfyfyfyyyryryr.png" alt="" style="transform: rotateY(193.846deg) translateZ(330px); transition: transform 1s ease 1.5s;">
+        <img src="https://i.postimg.cc/Pq7vZ5h6/0db7b7b6-2479-4698-a2b4-2e9d936ef048.png" alt="" style="transform: rotateY(221.538deg) translateZ(330px); transition: transform 1s ease 1.25s;">
+        <img src="https://i.postimg.cc/MKXT08PN/ssqs.jpg" alt="" style="transform: rotateY(249.231deg) translateZ(330px); transition: transform 1s ease 1s;">
+       <img src="https://i.postimg.cc/SKj5xDDB/279447284-7263038923770685-8743774292649378426-n.png" alt="" style="transform: rotateY(276.923deg) translateZ(330px); transition: transform 1s ease 0.75s;">
+      <img src="https://i.postimg.cc/3wVDsxks/295098607-7693657797375460-3578924342848081549-n.jpg" alt="" style="transform: rotateY(304.615deg) translateZ(330px); transition: transform 1s ease 0.5s;">
+
+
+
+        <!-- Text at center of ground -->
+        <p></p>
+      </div>
+      <div id="ground" style="width: 660px; height: 660px;"></div>
+    </div>
+
+    <div id="music-container">
+
+</div>
+
+
+
+
+    <script>
+
+      // You can change global variables here:
+      var radius = 330; // how big of the radius
+      var autoRotate = true; // auto rotate or not
+      var rotateSpeed = -60; // unit: seconds/360 degrees
+      var imgWidth = 120; // width of images (unit: px)
+      var imgHeight = 170; // height of images (unit: px)
+
+      // Link of background music - set 'null' if you dont want to play background music
+      var bgMusicURL =
+        "";
+      var bgMusicControls = true; // Show UI music control
+
+
+      // ===================== start =======================
+      setTimeout(init, 100);
+
+      var odrag = document.getElementById("drag-container");
+      var ospin = document.getElementById("spin-container");
+      var aImg = ospin.getElementsByTagName("img");
+      var aVid = ospin.getElementsByTagName("video");
+      var aEle = [...aImg, ...aVid]; // combine 2 arrays
+
+      // Size of images
+      ospin.style.width = imgWidth + "px";
+      ospin.style.height = imgHeight + "px";
+
+      // Size of ground - depend on radius
+      var ground = document.getElementById("ground");
+      ground.style.width = radius * 2 + "px";
+      ground.style.height = radius * 2 + "px";
+
+      function init(delayTime) {
+        for (var i = 0; i < aEle.length; i++) {
+          aEle[i].style.transform =
+            "rotateY(" +
+            i * (360 / aEle.length) +
+            "deg) translateZ(" +
+            radius +
+            "px)";
+          aEle[i].style.transition = "transform 1s";
+          aEle[i].style.transitionDelay =
+            delayTime || (aEle.length - i) / 4 + "s";
+        }
+      }
+
+      function applyTranform(obj) {
+        // Constrain the angle of camera (between 0 and 180)
+        if (tY > 180) tY = 180;
+        if (tY < 0) tY = 0;
+
+        // Apply the angle
+        obj.style.transform = "rotateX(" + -tY + "deg) rotateY(" + tX + "deg)";
+      }
+
+      function playSpin(yes) {
+        ospin.style.animationPlayState = yes ? "running" : "paused";
+      }
+
+      var sX,
+        sY,
+        nX,
+        nY,
+        desX = 0,
+        desY = 0,
+        tX = 0,
+        tY = 10;
+
+      // auto spin
+      if (autoRotate) {
+        var animationName = rotateSpeed > 0 ? "spin" : "spinRevert";
+        ospin.style.animation = `${animationName} ${Math.abs(
+          rotateSpeed
+        )}s infinite linear`;
+      }
+
+      // add background music
+      if (bgMusicURL) {
+        document.getElementById("music-container").innerHTML += `
+<audio src="${bgMusicURL}" ${
+          bgMusicControls ? "controls" : ""
+        } autoplay loop>
+<p>If you are reading this, it is because your browser does not support the audio element.</p>
+</audio>
+`;
+      }
+
+      // setup events
+      document.onpointerdown = function(e) {
+        clearInterval(odrag.timer);
+        e = e || window.event;
+        var sX = e.clientX,
+          sY = e.clientY;
+
+        this.onpointermove = function(e) {
+          e = e || window.event;
+          var nX = e.clientX,
+            nY = e.clientY;
+          desX = nX - sX;
+          desY = nY - sY;
+          tX += desX * 0.1;
+          tY += desY * 0.1;
+          applyTranform(odrag);
+          sX = nX;
+          sY = nY;
+        };
+
+        this.onpointerup = function(e) {
+          odrag.timer = setInterval(function() {
+            desX *= 0.95;
+            desY *= 0.95;
+            tX += desX * 0.1;
+            tY += desY * 0.1;
+            applyTranform(odrag);
+            playSpin(false);
+            if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+              clearInterval(odrag.timer);
+              playSpin(true);
+            }
+          }, 17);
+          this.onpointermove = this.onpointerup = null;
+        };
+
+        return false;
+      };
+     
+
+
+    </script>
+      
+      </body></html>
