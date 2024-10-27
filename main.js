@@ -4,11 +4,11 @@
     // --- [CONFIGURAÇÕES] ----------------------------------------------- 
 
     const API_KEY_LYRICS = "1637b78dc3b129e6843ed674489a92d0";
-    //const API_URL = "https://twj.es/radio_info/?radio_url=";
-    const API_URL = "https://twj.es/radio_info/?radio_url=https://stream-153.zeno.fm/vamxncstggnvv";
-    const TIME_TO_REFRESH = window?.streams?.timeRefresh || 10000;
+    const API_URL = "https://twj.es/radio_info/?radio_url=";
+    const TIME_TO_REFRESH = window?.streams?.timeRefresh || 5000;
 
     // --- [CONSTANTES E VARIÁVEIS] --------------------------------------
+
 
     const buttons = document.querySelectorAll("[data-outside]");
     const ACTIVE_CLASS = "is-active";
