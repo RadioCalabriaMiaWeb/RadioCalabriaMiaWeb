@@ -3,7 +3,7 @@
 
     // --- [CONFIGURAÇÕES] ----------------------------------------------- 
 
-    const API_KEY_LYRICS = "c1dc966639409f4a2a3f9e588da93710";
+    const API_KEY_LYRICS = "1637b78dc3b129e6843ed674489a92d0";
     //const API_URL = "https://twj.es/radio_info/?radio_url=";
     const API_URL = "https://twj.es/radio_info/?radio_url=https://stream-153.zeno.fm/vamxncstggnvv";
     const TIME_TO_REFRESH = window?.streams?.timeRefresh || 10000;
