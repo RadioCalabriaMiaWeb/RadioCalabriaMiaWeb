@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadioCalabriaMiaWeb</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://i.postimg.cc/brgjgRwG/radiocalabriamiaweb.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            transition: background 0.5s ease-in-out;
+        }
+
+        #player {
+            margin-top: 30px; /* Sposta il player leggermente verso l'alto */
+            width: 90%;
+            max-width: 600px;
+            height: 80%;
+            max-height: 700px;
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+            border: 5px solid;
+            border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            border-image-slice: 1;
+            animation: rainbow-border 3s infinite linear;
+        }
+
+        @keyframes rainbow-border {
+            0% {
+                border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            }
+            100% {
+                border-image-source: linear-gradient(405deg, red, orange, yellow, green, blue, indigo, violet);
+            }
+        }
+
+        #radio-title {
+            color: white;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        #cover {
+            min-width: 265px;
+            max-width: 265ppx;
+            min-height:265ppx;
+            max-height:265px;
+            border-radius: 17px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #cover:hover {
+            transform: scale(1.05);
+        }
+
+        #title {
+            font-size: 1.5em;
+            margin: 9px 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #artist {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        #audio-controls {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #volume-control {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 80%;
+        }
+
+        #volume-slider {
+            width: 70%;
+            height: 5px;
+            background: #ccc;
+            border-radius: 5px;
+            appearance: none;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        #volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #6200ea;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        #volume-slider:hover {
+            background: #aaa;
+        }
+
+        #volume-level {
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background: #6200ea;
+            color: #fff;
+            border: 3px solid;
+            border-image-source: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            border-image-slice: 1;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #3700b3;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(1.05);
+        }
+
+        #volume-message {
+            margin-top: 10px;
+            color: #ffcc00;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        #control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+      }
+
+        #play-button {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="player">
+        <div id="radio-title">RadioCalabriaMiaWeb</div>
+        <img id="cover" src="https://i.postimg.cc/brgjgRwG/radiocalabriamiaweb.jpg" alt="Album Cover">
+        <div id="title"></div>
+        <div id="artist"></div>
+        <div id="audio-controls">
+            <div id="volume-control">
+                <span id="volume-level">100%</span>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+            </div>
+            <div id="control-buttons">
+                <button id="play-button">Play</button>
+                <button id="stop-button">Stop</button>
+            </div>
+            <div id="volume-message"></div>
+        </div>
+    </div>
+
+    <script>
+  const nowPlayingUrl = "https://zenoplay.zenomedia.com/api/zenofm/nowplaying/vamxncstggnvv";
+        const defaultImage = "https://i.postimg.cc/brgjgRwG/radiocalabriamiaweb.jpg";
+        const player = new Audio("https://stream-153.zeno.fm/vamxncstggnvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ2YW14bmNzdGdnbnZ2IiwiaG9zdCI6InN0cmVhbS0xNTMuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6ImcyakNVM2dsUkhpcGNKcFFQN0tyVnciLCJpYXQiOjE3MzIyMDQwMTUsImV4cCI6MTczMjIwNDA3NX0.EKCAsWGxdiHkyT-wCwfEL1eKFMBYsq_IOdXWA9gtmLU");
+        const coverImg = document.getElementById('cover');
+        const titleElem = document.getElementById('title');
+        const artistElem = document.getElementById('artist');
+        const playButton = document.getElementById('play-button');
+        const stopButton = document.getElementById('stop-button');
+        const volumeSlider = document.getElementById('volume-slider');
+        const volumeLevel = document.getElementById('volume-level');
+        const volumeMessage = document.getElementById('volume-message');
+
+        async function fetchNowPlaying() {
+            try {
+                const response = await fetch(nowPlayingUrl);
+                const data = await response.json();
+                const { title, artist } = data;
+
+                titleElem.textContent = title || "";
+                artistElem.textContent = artist || "";
+
+                fetchCover(title, artist);
+            } catch (error) {
+                console.error("Error fetching now playing:", error);
+                titleElem.textContent = "Error loading data";
+                artistElem.textContent = "";
+                resetToDefault();
+            }
+        }
+
+        async function fetchCover(title, artist) {
+            const query = encodeURIComponent(`${title} ${artist}`);
+            const itunesUrl = `https://itunes.apple.com/search?term=${query}&limit=1&entity=song`;
+
+            try {
+                const response = await fetch(itunesUrl);
+                const data = await response.json();
+
+                if (data.results && data.results.length > 0) {
+                    const coverUrl = data.results[0].artworkUrl100.replace('100x100', '300x300');
+                    coverImg.src = coverUrl;
+                    document.body.style.background = `url('${coverUrl}') no-repeat center center fixed`;
+                    document.body.style.backgroundSize = "cover";
+                } else {
+                    resetToDefault();
+                }
+            } catch (error) {
+                console.error("Error fetching cover:", error);
+                resetToDefault();
+            }
+        }
+
+        function resetToDefault() {
+            coverImg.src = defaultImage;
+            document.body.style.background = `url('${defaultImage}') no-repeat center center fixed`;
+            document.body.style.backgroundSize = "cover";
+        }
+
+        playButton.addEventListener('click', () => {
+            player.play();
+        });
+
+        stopButton.addEventListener('click', () => {
+            player.pause();
+            player.currentTime = 0;
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value;
+            player.volume = volume;
+            volumeLevel.textContent = `${Math.round(volume * 100)}%`;
+
+            if (volume == 0) {
+                volumeMessage.textContent = "";
+            } else if (volume == 1) {
+                volumeMessage.textContent = "";
+            } else {
+                volumeMessage.textContent = "";
+            }
+        });
+
+        // Autoplay the music on load
+        window.onload = () => {
+            player.volume = 1; // Set initial volume to 100%
+            player.play();
+        };
+
+        fetchNowPlaying();
+        setInterval(fetchNowPlaying, 20000);
+    </script>
+</body>
+</html>
