@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="shortcut icon" href="https://i.postimg.cc/DZ89GW3d/bbkkkk.png">
+<title>RadioCalabriaMiaWeb</title>
+
+<style>
+:root{
+  --blue:#0000ff;
+  --blue-dark:#001acc;
+  --white:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+#bg1,#bg2{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background-size:cover;background-repeat:no-repeat;
+  transition:opacity 1.5s ease-in-out;z-index:-1;
+}
+#bg2{opacity:0;}
+
+.container{display:flex;justify-content:center;padding:79px 16px 40px;}
+.rcm-box{
+  margin-top:60px;width:100%;max-width:880px;
+  background:var(--white);border-radius:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.20);
+  overflow:hidden;position:relative;
+}
+
+nav.inner-nav{
+  display:flex;justify-content:center;gap:18px;
+  background:var(--blue);color:var(--white);
+  padding:12px 10px;align-items:center;
+}
+nav.inner-nav a{
+  color:var(--white);text-decoration:none;font-weight:700;
+  padding:8px 12px;border-radius:8px;
+  transition:background 160ms,transform 160ms;
+}
+nav.inner-nav a:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px);}
+nav.inner-nav a.active-nav{background:var(--blue-dark);box-shadow:0 4px 10px rgba(0,0,0,0.12);}
+
+.content-wrapper{padding:18px;box-sizing:border-box;}
+.content-section{display:none;}
+.content-section.active{display:block;}
+
+.rcm-footer{
+  background:var(--blue);color:var(--white);
+  padding:14px;text-align:center;font-size:15px;
+  font-weight:bold;border-top:3px solid var(--blue-dark);
+  margin-top:25px;border-radius:0 0 12px 12px;
+}
+.player-modern{
+  width:270px;
+  height:108px;
+  background:linear-gradient(135deg,#ff4d4d,#ffb84d,#4dff88,#4dd2ff);
+  border-radius:12px;
+  box-shadow:0 0 14px rgba(0,0,0,0.4);
+  padding:10px;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+  color:#fff;
+  margin:10px auto 22px auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+}
+.input[type=range]{
+  -webkit-appearance:none; width:100%; height:6px; border-radius:3px; background:#fff;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:12px; height:12px; border-radius:50%; background:#fff; cursor:pointer; box-shadow:0 0 3px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+<body>
+<!-- DIV SFONDO -->
+<div id="bg1" style="background-image:url('https://i.postimg.cc/J4B8sMyn/Radio-Calabria-Mia-Web-Nuovo-Nuovissimo.png');background-position:center 20%;"></div>
+<div id="bg2" style="background-position:center 20%;"></div>
+
+<div class="container">
+<div class="rcm-box">
+
+  <nav class="inner-nav">
+    <a href="javascript:void(0)" data-target="home" class="active-nav">RadioCalabriaMiaWeb</a>
+    <a href="javascript:void(0)" data-target="about">Chi Siamo</a>
+  </nav>
+
+  <div class="content-wrapper">
+
+    <!-- HOME -->
+    <section id="home" class="content-section active">
+      <center>
+        <img src="https://i.postimg.cc/DzRddtkV/bbkkkk.png" width="200" height="200">
+        <center><iframe src="https://www.drogbaster.it/time.htm" width="190" height="70" style="border:none" scrolling="no"></iframe>
+      </center>
+      <!-- Inizio Cornice RadioCalabriaMiaWeb -->
+                   <style>
+                        .rcm-box { width: 100%; max-width: 760px; margin: 0 auto 20px auto; padding: 12px; box-sizing: border-box; text-align: center; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.15); font-family: Arial, sans-serif; }
+                        .rcm-btn { display: block; width: 100%; max-width: 90%; margin: 10px auto; padding: 12px; text-align: center; background: #0000ff !important; color: #ffffff !important; font-weight: bold; text-decoration: none; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+                        .rcm-btn:hover { background: #001acc !important; color: #ffffff !important; }
+                        .rcm-img { width: 100%; height: auto; max-width: 360px; margin: 10px auto; display: block; }
+                        .rcm-marquee { overflow: hidden; white-space: nowrap; background: #fff; margin: 12px auto; padding: 6px; border-radius: 8px; max-width: 90%; box-shadow: inset 0 0 6px rgba(0,0,0,0.1); }
+                        .rcm-marquee span { display: inline-block; padding-left: 100%; animation: scrollText 18s linear infinite; color: #0000ff; font-weight: bold; }
+                        @keyframes scrollText { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
+                        .rcm-store img { width: 45%; max-width: 180px; margin: 6px; }
+                        #muses-container { display: flex; justify-content: center; margin: 10px 0; }
+                        #muses-container object, #muses-container embed, #muses-container iframe { display: block; margin: auto; }
+                    </style>
+
+                
+
+                    <div class="rcm-box">
+                        <div style="text-align: center;">
+    <!-- Primo pulsante -->
+    <img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" style="display: block; margin: 0 auto 10px auto; max-width: 80px;" />
+    <a href="https://stream-179.zeno.fm/h0vgpbvuyx4tv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJoMHZncGJ2dXl4NHR2IiwiaG9zdCI6InN0cmVhbS0xNzkuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Im51alJCRG1zUTJDMTFjdzZHWWxxMUEiLCJpYXQiOjE3NjEzMTIzMDMsImV4cCI6MTc2MTMxMjM2M30.QAsMyNcKp_wAC-jnf4ghgBy_s9bqrOjj8S3WEWFe2z0"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;padding:12px 20px;background:#0000ff;color:#fff;text-decoration:none;border:0;border-radius:8px;font-weight:600;font-family:Arial,sans-serif;margin:8px;text-align:center;">
+       Clicca Qui Player Alternativo Bianco in Automatico
+    </a>
+
+    <!-- Secondo pulsante -->
+    <img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" style="display: block; margin: 20px auto 10px auto; max-width: 80px;" />
+    <a href="https://radiocalabriamiaweb.github.io/RadioCalabriaMiaWeb/RadioCalabriaMiaWeb5.html"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;padding:12px 20px;background:#0000ff;color:#fff;text-decoration:none;border:0;border-radius:8px;font-weight:600;font-family:Arial,sans-serif;margin:8px;text-align:center;">
+       Clicca Qui Ascoltaci Dal Player RadioBox Online
+      </a>
+
+    <!-- Terzo pulsante -->
+    <img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" style="display: block; margin: 20px auto 10px auto; max-width: 80px;" />
+    <a href="https://radiocalabriamiaweb.github.io/RadioCalabriaMiaWeb/RadioCalabriaMiaWeb2.html"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;padding:12px 20px;background:#0000ff;color:#fff;text-decoration:none;border:0;border-radius:8px;font-weight:600;font-family:Arial,sans-serif;margin:8px;text-align:center;">
+       Clicca Qui Ascoltaci Dal Player Alternativo
+    </a>
+<img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif">
+</div>
+<center><img class="rcm-img" src="https://i.postimg.cc/QMDjnhMf/ju.png" alt="Scritta clicca il Player">
+           <!-- Inizio Player -->
+       <center><div class="player-modern">
+        <div id="playerTitleHome" style="font-weight:bold;font-size:16px;color:#ffffff;margin-bottom:5px;text-shadow:1px 1px 2px rgba(0,0,0,0.6);">
+          🎵 RadioCalabriaMiaWeb
+        </div>
+        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;">
+          <button id="playBtnHome" style="background:linear-gradient(to bottom,#ffffff,#ffe6ff);border:none;border-radius:6px;width:40px;height:40px;font-weight:bold;cursor:pointer;color:#000;font-size:18px;">▶</button>
+          <input id="volumeSliderHome" type="range" min="0" max="1" step="0.01" value="1">
+          <span style="font-size:12px;color:#fff;font-weight:bold;">Live</span>
+        </div>
+        <div style="width:100%;height:6px;background:rgba(255,255,255,0.3);border-radius:3px;margin-top:6px;overflow:hidden;">
+          <div id="progressBarHome" style="width:0%;height:100%;background:#fff;transition:width 0.1s;"></div>
+        </div>
+        <audio id="radioHome" src="https://stream-179.zeno.fm/h0vgpbvuyx4tv" preload="none"></audio>
+      </div>
+  
+                    <img class="rcm-img" src="https://i.postimg.cc/g0c22GPb/112223-removebg-preview.png" alt="Scritta Radio Player 2" />
+                    <iframe src="https://radiocalabriamiaweb.github.io/RadioCalabriaMiaWeb/RadioCalabriaMiaWeb6.html" style="border:none; width:100%; max-width:320px; height:420px; border-radius:8px;" scrolling="no"></iframe>
+                   <img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif">
+                   <center><img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" />
+    <div style="text-align: center; margin: 20px 0;">
+    <a href="https://onlineradiobox.com/it/radiocalabriamiaweb/?cs=it.radiocalabriamiaweb&amp;played=1" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       style="display:inline-block;
+              padding:12px 20px;
+              background:#0000ff;
+              color:#fff;
+              text-decoration:none;
+              border:0;
+              border-radius:8px;
+              font-weight:600;
+              font-family:Arial,sans-serif;
+              margin:8px;
+              text-align:center;
+              box-shadow:0 4px 8px rgba(0,0,0,0.3);
+              transition: background 0.3s;">
+        Clicca Qui e Ascoltaci Su RadioBox
+    </a>
+</div>
+
+                    
+                    <div class="rcm-store">
+                        <a href="https://geo.itunes.apple.com/us/app/id1101437391" target="_blank">
+                            <img src="https://i.postimg.cc/gc5bwykF/google-play-get-app-it-IT.png" alt="Google Play" />
+                        </a>
+                        <a href="https://geo.itunes.apple.com/us/app/id1101437391" target="_blank">
+                            <img src="https://i.postimg.cc/PJGG7h7f/apple-button-it-IT.png" alt="App Store" />
+                        </a>
+                    </div>
+
+                    <img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif" />
+                    <img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" />
+         <div style="text-align: center; margin: 20px 0;">
+    <a href="https://www.radio.it/s/radiocalabriamiaweb" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       style="display:inline-block;
+              padding:12px 20px;
+              background:#0000ff;
+              color:#fff;
+              text-decoration:none;
+              border:0;
+              border-radius:8px;
+              font-weight:600;
+              font-family:Arial,sans-serif;
+              margin:8px;
+              text-align:center;
+              box-shadow:0 4px 8px rgba(0,0,0,0.3);
+              transition: background 0.3s;">
+              Clicca Qui Ascoltaci Da Radio.IT
+             </a>
+</div>
+
+
+                    <div class="rcm-store">
+                        <a href="https://play.google.com/store/apps/details?id=de.radio.android" target="_blank">
+                            <img src="https://i.postimg.cc/gc5bwykF/google-play-get-app-it-IT.png" alt="Google Play" />
+                        </a>
+                        <a href="https://apps.apple.com/us/app/radio-net-radio-and-podcast/id402206359" target="_blank">
+                            <img src="https://i.postimg.cc/PJGG7h7f/apple-button-it-IT.png" alt="App Store" />
+                        </a>
+                    </div>
+                     <center><img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Promo Gif"></center>
+                    <center><img class="rcm-img" src="https://i.postimg.cc/tgyZfY6k/swswws.png" alt="Scansionaci Qr"></center>
+                    <img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif" />
+
+                    <!-- inizio Codice Scritte: Fondatore Web Master e Responsabili e Speaker -->
+                    <center><div style="text-align:center;">
+                  <img src="https://i.postimg.cc/gj9Znjwq/flamingtext-com-9107141559.png" 
+                  alt="Scritte Fondatori Responsabile 1"
+                  style="width:100%; max-width:402px; height:auto;">
+                  </div>
+
+                   <center><div style="text-align:center;">
+                  <img src="https://i.postimg.cc/8cBjcHQm/drr.png" 
+                  alt="Scritte Fondatori Responsabile 2"
+                  style="width:100%; max-width:402px; height:auto;">
+                  </div>
+                   <!-- fine Codice Scritte Fondatori Speaker e Responsabili Link-->
+                   <!-- inzio Codice Slider Foto: Inserisci qui lo slider quadrato piccolo nella Home -->
+                    <div class="rcm-slider-square">
+                        <div class="slides-square">
+                            <img src="https://i.postimg.cc/c4jFQhQD/sdwswewew.png" alt="Antonio ed Enza" class="slide-square">
+                            <img src="https://i.postimg.cc/rsHJpM10/6885822-xl.png" alt="Programma Antonio Saccà" class="slide-square">
+                            <img src="https://i.postimg.cc/g27nBrYd/6885814-xl.png" alt="Come Contattare Antonio Saccà" class="slide-square">
+                            <img src="https://i.postimg.cc/rsXCrQdg/ffefef.png" alt="Web Master Gianluca Rovitti" class="slide-square">
+                            <img src="https://i.postimg.cc/Mp5Yc7b5/6885818-xl.png" alt="Ippolita Paladino Responsabile Link" class="slide-square">
+                            <img src="https://i.postimg.cc/7Zt28mN5/6885820-xl.png" alt="Peppa Responsabile Link" class="slide-square">
+                            <img src="https://i.postimg.cc/TPqv5HHW/6885821-xl.png" alt="Come Contattare i Nostri Spreaker" class="slide-square">
+                            <img src="https://i.postimg.cc/YCDVhHCj/Francesca.png" alt="Speaker Francy" class="slide-square">
+                            <img src="https://i.postimg.cc/85Xps0jW/6885819-xl.png" alt="Speaker Nino" class="slide-square">
+                        </div>
+                        <button class="prev-square">&#10094;</button>
+                        <button class="next-square">&#10095;</button>
+                    </div>
+                    <center><img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif"></center>
+
+                    <style>
+                    .rcm-slider-square {
+                        position: relative;
+                        width: 95%;
+                        max-width: 400px;
+                        height: 400px;
+                        margin: 0 auto;
+                        overflow: hidden;
+                    }
+
+                    .rcm-slider-square .slides-square {
+                        display: flex;
+                        transition: transform 0.5s ease-in-out;
+                        height: 100%;
+                    }
+
+                    .rcm-slider-square .slide-square {
+                        min-width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        display: block;
+                    }
+
+                    .rcm-slider-square .prev-square,
+                    .rcm-slider-square .next-square {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background-color: rgba(0,0,0,0.25);
+                        color: #fff;
+                        border: none;
+                        padding: 6px 10px;
+                        font-size: 18px;
+                        cursor: pointer;
+                        z-index: 10;
+                        user-select: none;
+                    }
+
+                    .rcm-slider-square .prev-square { left: 5px; }
+                    .rcm-slider-square .next-square { right: 5px; }
+
+                    .rcm-slider-square .prev-square:hover,
+                    .rcm-slider-square .next-square:hover { background-color: rgba(0,0,0,0.6); }
+
+                    @media (max-width: 520px){
+                        .rcm-slider-square { height: 250px; }
+                        .rcm-slider-square .prev-square,
+                        .rcm-slider-square .next-square { font-size: 16px; padding: 4px 8px; }
+                    }
+                    </style>
+
+                    <script>
+                    (function(){
+                        const slider = document.querySelector('.rcm-slider-square');
+                        const slidesContainer = slider.querySelector('.slides-square');
+                        const slides = slider.querySelectorAll('.slide-square');
+                        const prev = slider.querySelector('.prev-square');
+                        const next = slider.querySelector('.next-square');
+                        let current = 0;
+
+                        function showSlide(index){
+                            if(index < 0) index = slides.length - 1;
+                            if(index >= slides.length) index = 0;
+                            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+                            current = index;
+                        }
+
+                        prev.addEventListener('click', () => {
+                            showSlide(current - 1);
+                            resetInterval();
+                        });
+
+                        next.addEventListener('click', () => {
+                            showSlide(current + 1);
+                            resetInterval();
+                        });
+
+                        let autoSlide = setInterval(() => showSlide(current + 1), 5000);
+
+                        function resetInterval() {
+                            clearInterval(autoSlide);
+                            autoSlide = setInterval(() => showSlide(current + 1), 5000);
+                        }
+
+                        showSlide(0);
+                    })();
+                    </script>
+
+                  <center><div style="text-align:center;">
+                <img src="https://i.postimg.cc/W4qSbvbT/flamingtext-com-40930451782.png" 
+                alt="Scritta Sponsor"
+                style="width:100%; max-width:402px; height:auto;">
+                </div>
+                        <!-- inizio Codice Album Foto Sponsor -->
+                        <div style="display:flex;justify-content:center;align-items:flex-start;height:auto;">
+                            <iframe srcdoc='
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Album Fotografico Sponsor</title>
+<style>
+body{margin:0;background:transparent;display:flex;justify-content:center;align-items:flex-start;height:auto;}
+.album{width:480px;height:360px;overflow:hidden;border-radius:18px;position:relative;display:flex;justify-content:center;align-items:center;}
+.slides{display:flex;height:100%;transition:transform .5s ease;cursor:grab;}
+.slide{flex:0 0 100%;display:flex;justify-content:center;align-items:center;}
+.slide img{width:100%;height:100%;object-fit:contain;border-radius:12px;}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;padding:12px;border-radius:50%;cursor:pointer;color:#fff;font-size:18px;z-index:2;}
+.arrow.left{left:6px;}.arrow.right{right:6px;}
+.dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;}
+.dot.active{background:#7c3aed;}
+</style>
+</head>
+<body>
+<div class="album">
+  <div class="slides" id="slides">
+    <div class="slide"><img src="https://i.postimg.cc/mgsj8Mm1/Immagine-2025-10-21-211625.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/4xgPBtWg/dededdeqqqq.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/vZsh3901/edededed.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/4xQ5Md0d/rrerrere.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/13QBJ6vX/edeeddwqqq.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/dVY64d5T/rffrfrfrf.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/L8pDNfx1/rfrfrfrfrfrfrf.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/sg4c8XLB/sasxax.png"></div>
+    <div class="slide"><img src="https://i.postimg.cc/2j0DgCkX/Whats-App-Image-2025-10-30-at-10-35-35.jpg"></div>
+    <div class="slide"><img src="https://i.postimg.cc/VsK82zsf/Whats-App-Image-2025-10-30-at-10-36-16.jpg"></div>
+    <div class="slide"><img src="https://i.postimg.cc/zDxr4qD1/Whats-App-Image-2025-10-30-at-10-36-36.jpg"></div>
+  </div>
+  <button class="arrow left" id="prevBtn">◀</button>
+  <button class="arrow right" id="nextBtn">▶</button>
+  <div class="dots" id="dots"></div>
+</div>
+<script>
+const slidesEl=document.getElementById("slides");
+const dotsEl=document.getElementById("dots");
+const slides=slidesEl.children;
+const prevBtn=document.getElementById("prevBtn");
+const nextBtn=document.getElementById("nextBtn");
+let index=0;
+function renderDots(){
+  dotsEl.innerHTML="";
+  Array.from(slides).forEach((_,i)=>{
+    const d=document.createElement("div");
+    d.className="dot";
+    if(i===index)d.classList.add("active");
+    d.onclick=()=>{index=i;update();}
+    dotsEl.appendChild(d);
+  });
+}
+function update(){
+  slidesEl.style.transform="translateX("+(-index*100)+"%)";
+  Array.from(dotsEl.children).forEach((d,i)=>d.style.background=i===index?"#7c3aed":"rgba(255,255,255,.3)");
+}
+function next(){index=(index+1)%slides.length;update();}
+function prev(){index=(index-1+slides.length)%slides.length;update();}
+prevBtn.onclick=prev; nextBtn.onclick=next;
+// swipe
+let startX=0,dragging=false;
+slidesEl.onpointerdown=e=>{dragging=true;startX=e.clientX;slidesEl.style.transition="none";}
+slidesEl.onpointermove=e=>{if(!dragging)return;slidesEl.style.transform="translateX("+(-index*100+((e.clientX-startX)/slidesEl.clientWidth*100))+"%)";}
+slidesEl.onpointerup=slidesEl.onpointerleave=e=>{if(!dragging)return;dragging=false;slidesEl.style.transition="transform .5s ease"; const dx=e.clientX-startX; if(Math.abs(dx)>slidesEl.clientWidth*0.15) dx<0?next():prev(); else update();}
+setInterval(next,4000);
+renderDots();
+update();
+</script>
+</body>
+</html>' width="500" height="380" frameborder="0" style="border:none;"></iframe>
+                        </div>
+<center><img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif"></center>
+                        <!-- FINE Codice Album Foto Sponsor -->
+                    </div>
+  </center>                 
+<div style="text-align:center;">
+  <img src="https://i.postimg.cc/5yBhtbrM/52671929-1000-4-optimized-removebg-preview.png" 
+       alt="Regole"
+       style="width:100%; max-width:402px; height:auto; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2);">
+</div>
+ </center>
+                    <center><img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif"></center>
+                    <!-- FINE Codice Slider: Inserisci qui lo slider quadrato piccolo nella Home -->  </section>
+
+<!--fine Player 1 -->
+<!--Chi Siamo Inizio Codice cornice 2-->
+    <section id="about" class="content-section">
+      <center>
+        <h2 style="color:#0000ff;">
+        <img src="https://i.postimg.cc/DzRddtkV/bbkkkk.png" width="180" height="180" alt="Logo RadioCalabriaMiaWeb">
+        <p style="max-width:600px;margin:auto;color:#000;">
+          <!-- Inizio Cornice Player2 -->        </p>
+      </center>
+     <!-- Inizio Cornice RadioCalabriaMiaWeb -->
+                    <style>
+                        .rcm-box { width: 100%; max-width: 760px; margin: 0 auto 20px auto; padding: 12px; box-sizing: border-box; text-align: center; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.15); font-family: Arial, sans-serif; }
+                        .rcm-btn { display: block; width: 100%; max-width: 90%; margin: 10px auto; padding: 12px; text-align: center; background: #0000ff !important; color: #ffffff !important; font-weight: bold; text-decoration: none; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+                        .rcm-btn:hover { background: #001acc !important; color: #ffffff !important; }
+                        .rcm-img { width: 100%; height: auto; max-width: 360px; margin: 10px auto; display: block; }
+                        .rcm-marquee { overflow: hidden; white-space: nowrap; background: #fff; margin: 12px auto; padding: 6px; border-radius: 8px; max-width: 90%; box-shadow: inset 0 0 6px rgba(0,0,0,0.1); }
+                        .rcm-marquee span { display: inline-block; padding-left: 100%; animation: scrollText 18s linear infinite; color: #0000ff; font-weight: bold; }
+                        @keyframes scrollText { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
+                        .rcm-store img { width: 45%; max-width: 180px; margin: 6px; }
+                        #muses-container { display: flex; justify-content: center; margin: 10px 0; }
+                        #muses-container object, #muses-container embed, #muses-container iframe { display: block; margin: auto; }
+                    </style>
+                     <div class="rcm-box">
+                        <div style="text-align: center;">
+    <!-- Primo pulsante -->
+    <img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" style="display: block; margin: 0 auto 10px auto; max-width: 80px;" />
+    <a href="https://stream-179.zeno.fm/h0vgpbvuyx4tv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJoMHZncGJ2dXl4NHR2IiwiaG9zdCI6InN0cmVhbS0xNzkuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6Im51alJCRG1zUTJDMTFjdzZHWWxxMUEiLCJpYXQiOjE3NjEzMTIzMDMsImV4cCI6MTc2MTMxMjM2M30.QAsMyNcKp_wAC-jnf4ghgBy_s9bqrOjj8S3WEWFe2z0"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;padding:12px 20px;background:#0000ff;color:#fff;text-decoration:none;border:0;border-radius:8px;font-weight:600;font-family:Arial,sans-serif;margin:8px;text-align:center;">
+       Clicca Qui Player Alternativo Bianco in Automatico
+    </a>
+
+    <!-- Secondo pulsante -->
+    <img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" style="display: block; margin: 20px auto 10px auto; max-width: 80px;" />
+    <a href="https://radiocalabriamiaweb.github.io/RadioCalabriaMiaWeb/RadioCalabriaMiaWeb5.html"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;padding:12px 20px;background:#0000ff;color:#fff;text-decoration:none;border:0;border-radius:8px;font-weight:600;font-family:Arial,sans-serif;margin:8px;text-align:center;">
+       Clicca Qui Ascoltaci Dal Player RadioBox Online
+    </a>
+
+    <!-- Terzo pulsante -->
+    <img src="https://i.postimg.cc/Vsxq6Yph/image.gif" alt="Mano Indicazione" style="display: block; margin: 20px auto 10px auto; max-width: 80px;" />
+    <a href="https://radiocalabriamiaweb.github.io/RadioCalabriaMiaWeb/RadioCalabriaMiaWeb2.html"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;padding:12px 20px;background:#0000ff;color:#fff;text-decoration:none;border:0;border-radius:8px;font-weight:600;font-family:Arial,sans-serif;margin:8px;text-align:center;">
+       Clicca Qui Ascoltaci Dal Player Alternativo
+    </a>
+</div>
+     <!--Inizio Player Chi Siamo-->
+          <img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif">
+      <img class="rcm-img" src="https://i.postimg.cc/QMDjnhMf/ju.png" alt="Clicca il Player e Ascoltaci">
+      <center><div class="player-modern">
+        <div id="playerTitleAbout" style="font-weight:bold;font-size:16px;color:#ffffff;margin-bottom:5px;text-shadow:1px 1px 2px rgba(0,0,0,0.6);">
+          🎶 RadioCalabriaMiaWeb
+        </div>
+        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;">
+          <button id="playBtnAbout" style="background:linear-gradient(to bottom,#ffffff,#ffe6ff);border:none;border-radius:6px;width:40px;height:40px;font-weight:bold;cursor:pointer;color:#000;font-size:18px;">▶</button>
+          <input id="volumeSliderAbout" type="range" min="0" max="1" step="0.01" value="1">
+          <span style="font-size:12px;color:#fff;font-weight:bold;">Live</span>
+        </div>
+        <div style="width:100%;height:6px;background:rgba(255,255,255,0.3);border-radius:3px;margin-top:6px;overflow:hidden;">
+          <div id="progressBarAbout" style="width:0%;height:100%;background:#fff;transition:width 0.1s;"></div>
+        </div>
+        <audio id="radioAbout" src="https://stream-179.zeno.fm/h0vgpbvuyx4tv" preload="none"></audio>
+      </div>
+<img class="rcm-img" src="https://i.postimg.cc/g0c22GPb/112223-removebg-preview.png" alt="Player Con Autodj Solo">
+<iframe src="https://radiocalabriamiaweb.github.io/RadioCalabriaMiaWeb/RadioCalabriaMiaWeb6.html" style="border:none; width:100%; max-width:320px; height:420px; border-radius:8px;" scrolling="no"></iframe>
+    <img class="rcm-img" src="https://i.postimg.cc/c1BC82fj/Ts6zdl-Jie-Iay.gif" alt="Barra Colorata Gif">
+<center>
+ <div style="text-align:center;">
+  <img src="https://i.postimg.cc/15VGCBLc/cccffff.png" 
+       alt="Foto Come Siamo Nati chi Siamo"
+       style="width:100%; max-width:402px; height:auto; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2);">
+</div>
+ 
+</center>
+
+    </section>
+<!-- Fine Player Chi Siamo -->
+  </div>
+
+  <!-- Footer -->
+  <div class="rcm-footer">
+    © 2025 RadioCalabriaMiaWeb Tutti i Diritti Riservati
+  </div>
+<script>
+    // Navigazione tra le sezioni
+    (function(){
+        const navLinks = document.querySelectorAll('nav.inner-nav a');
+        const sections = document.querySelectorAll('.content-wrapper .content-section');
+
+        function showSection(name){
+            sections.forEach(s => s.classList.toggle('active', s.id === name));
+            navLinks.forEach(a => a.classList.toggle('active-nav', a.getAttribute('data-target') === name));
+            document.querySelector('.rcm-box').scrollIntoView({behavior:'smooth'});
+        }
+
+        navLinks.forEach(a=>{
+            a.addEventListener('click', function(){
+                showSection(a.getAttribute('data-target'));
+            });
+        });
+
+        showSection('home');
+    })();
+
+    // SLIDESHOW CON DISSOLVENZA
+    (function(){
+        const images = [
+            'https://i.postimg.cc/J4B8sMyn/Radio-Calabria-Mia-Web-Nuovo-Nuovissimo.png',
+            'https://i.postimg.cc/Kcfk07Qw/Radio-Calabria-Mia-Web-Nuovissimo.png',
+            'https://i.postimg.cc/XJCqKhQ7/Radio-Calabria-Mia-Web-Nuovo-Seminuovo.png'
+        ];
+
+        const posY = 9; // <-- CAMBIA QUESTO NUMERO per spostare su/giu tutte le immagini (0-100)
+        let current = 0;
+        const bg1 = document.getElementById('bg1');
+        const bg2 = document.getElementById('bg2');
+        let visible = true;
+
+        // Applica posizione verticale iniziale
+        bg1.style.backgroundPosition = `center ${posY}%`;
+        bg2.style.backgroundPosition = `center ${posY}%`;
+
+        setInterval(() => {
+            current = (current + 1) % images.length;
+            if(visible){
+                bg2.style.backgroundImage = `url('${images[current]}')`;
+                bg2.style.backgroundPosition = `center ${posY}%`;
+                bg2.style.opacity = 1;
+                bg1.style.opacity = 0;
+            } else {
+                bg1.style.backgroundImage = `url('${images[current]}')`;
+                bg1.style.backgroundPosition = `center ${posY}%`;
+                bg1.style.opacity = 1;
+                bg2.style.opacity = 0;
+            }
+            visible = !visible;
+        }, 6000);
+    })();
+</script>
+
+</body>
+</html>
+
+</div> <!-- chiusura rcm-box -->
+</div> <!-- chiusura container -->
+<script>
+// --- PLAYER HOME ---
+const audioHome = document.getElementById('radioHome');
+const playBtnHome = document.getElementById('playBtnHome');
+const volHome = document.getElementById('volumeSliderHome');
+const barHome = document.getElementById('progressBarHome');
+
+// --- PLAYER ABOUT ---
+const audioAbout = document.getElementById('radioAbout');
+const playBtnAbout = document.getElementById('playBtnAbout');
+const volAbout = document.getElementById('volumeSliderAbout');
+const barAbout = document.getElementById('progressBarAbout');
+
+// --- Funzioni comuni per i player ---
+function setupPlayer(audio, playBtn, vol, bar) {
+  if (!audio || !playBtn || !vol || !bar) return;
+
+  // Riavvio automatico su errore o fine dopo 1 secondo
+  function autoRestart() {
+    audio.pause();
+    audio.load();
+    setTimeout(() => audio.play().catch(autoRestart), 1000);
+  }
+
+  audio.onended = autoRestart;
+  audio.onerror = autoRestart;
+
+  // Pulsante Play/Pause
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      stopOtherAudios(audio);
+      audio.play();
+      playBtn.textContent = "❚❚";
+    } else {
+      audio.pause();
+      playBtn.textContent = "▶";
+    }
+  });
+
+  // Volume
+  vol.addEventListener('input', () => audio.volume = vol.value);
+
+  // Progress bar
+  setInterval(() => {
+    bar.style.width = !audio.paused
+      ? Math.floor(Math.random() * 100) + "%"
+      : "0%";
+  }, 200);
+}
+
+// --- Ferma ogni altro audio attivo ---
+function stopOtherAudios(current) {
+  [audioHome, audioAbout].forEach(aud => {
+    if (aud && aud !== current && !aud.paused) {
+      aud.pause();
+      if (aud === audioHome) playBtnHome.textContent = "▶";
+      if (aud === audioAbout) playBtnAbout.textContent = "▶";
+    }
+  });
+}
+
+// --- Inizializza entrambi i player ---
+setupPlayer(audioHome, playBtnHome, volHome, barHome);
+setupPlayer(audioAbout, playBtnAbout, volAbout, barAbout);
+
+// --- AUTOPLAY IMMEDIATO PER SEZIONE ATTIVA ---
+document.addEventListener('DOMContentLoaded', () => {
+  const activeSection = document.querySelector('.content-section.active');
+
+  if (activeSection && activeSection.id === 'home' && audioHome) {
+    audioHome.volume = volHome.value;
+    audioHome.play().then(() => playBtnHome.textContent = "❚❚").catch(()=>{});
+  }
+
+  if (activeSection && activeSection.id === 'about' && audioAbout) {
+    audioAbout.volume = volAbout.value;
+    audioAbout.play().then(() => playBtnAbout.textContent = "❚❚").catch(()=>{});
+  }
+});
+
+// --- NAVIGAZIONE TRA SEZIONI CON AUDIO GESTITO ---
+const navLinks = document.querySelectorAll('nav.inner-nav a');
+const sections = document.querySelectorAll('.content-section');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const target = link.getAttribute('data-target');
+
+    // Mostra la sezione selezionata
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(target).classList.add('active');
+
+    // Aggiorna nav
+    navLinks.forEach(l => l.classList.remove('active-nav'));
+    link.classList.add('active-nav');
+
+    // Avvia il player della sezione attiva e ferma l’altro
+    if (target === 'home') {
+      stopOtherAudios(audioHome);
+      if (audioHome.paused) audioHome.play().catch(()=>{});
+    } else if (target === 'about') {
+      stopOtherAudios(audioAbout);
+      if (audioAbout.paused) audioAbout.play().catch(()=>{});
+    } else {
+      stopOtherAudios(null);
+    }
+  });
+});
+</script>
+</body>
+</html>
