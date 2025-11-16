@@ -552,42 +552,45 @@ update();
         showSection('home');
     })();
 
-    // SLIDESHOW CON DISSOLVENZA
-    (function(){
-        const images = [
-            'https://i.postimg.cc/J4B8sMyn/Radio-Calabria-Mia-Web-Nuovo-Nuovissimo.png',
-            'https://i.postimg.cc/Kcfk07Qw/Radio-Calabria-Mia-Web-Nuovissimo.png',
-            'https://i.postimg.cc/XJCqKhQ7/Radio-Calabria-Mia-Web-Nuovo-Seminuovo.png'
-        ];
+// SLIDESHOW SUPER LEGGERO (fluido + non pesante)
+(function() {
 
-        const posY = 9; // <-- CAMBIA QUESTO NUMERO per spostare su/giu tutte le immagini (0-100)
-        let current = 0;
-        const bg1 = document.getElementById('bg1');
-        const bg2 = document.getElementById('bg2');
-        let visible = true;
+    const images = [
+        "https://i.postimg.cc/J4B8sMyn/Radio-Calabria-Mia-Web-Nuovo-Nuovissimo.png",
+        "https://i.postimg.cc/XJCqKhQ7/Radio-Calabria-Mia-Web-Nuovo-Seminuovo.png",
+       ];
 
-        // Applica posizione verticale iniziale
-        bg1.style.backgroundPosition = `center ${posY}%`;
-        bg2.style.backgroundPosition = `center ${posY}%`;
+    const posY = 9; // <-- sposta le immagini in verticale (0-100)
+    let i = 0, visible = true;
 
-        setInterval(() => {
-            current = (current + 1) % images.length;
-            if(visible){
-                bg2.style.backgroundImage = `url('${images[current]}')`;
-                bg2.style.backgroundPosition = `center ${posY}%`;
-                bg2.style.opacity = 1;
-                bg1.style.opacity = 0;
-            } else {
-                bg1.style.backgroundImage = `url('${images[current]}')`;
-                bg1.style.backgroundPosition = `center ${posY}%`;
-                bg1.style.opacity = 1;
-                bg2.style.opacity = 0;
-            }
-            visible = !visible;
-        }, 6000);
-    })();
+    const bg1 = document.getElementById("bg1");
+    const bg2 = document.getElementById("bg2");
+
+    // Imposta posizione una sola volta (super leggero)
+    bg1.style.backgroundPosition = `center ${posY}%`;
+    bg2.style.backgroundPosition = `center ${posY}%`;
+    bg1.style.backgroundImage = `url('${images[0]}')`;
+    bg1.style.opacity = 1;
+
+    setInterval(() => {
+        i = (i + 1) % images.length;
+
+        if (visible) {
+            bg2.style.backgroundImage = `url('${images[i]}')`;
+            bg2.style.opacity = 1;
+            bg1.style.opacity = 0;
+        } else {
+            bg1.style.backgroundImage = `url('${images[i]}')`;
+            bg1.style.opacity = 1;
+            bg2.style.opacity = 0;
+        }
+
+        visible = !visible;
+
+    }, 6000);
+
+})();
 </script>
-
 </body>
 </html>
 
