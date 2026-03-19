@@ -8,16 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --card:#0066ff; /* player blu */
+  --card:#0066ff; 
   --accent:#0066ff; 
   --accent2:#3399ff; 
-  --text:#ffffff; /* testo bianco */
-  --muted:#ffffff; /* birrillo bianco */
-  --border:#2a2a38;
+  --text:#ffffff; 
+  --muted:#ffffff; 
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  background:transparent; /* sfondo esterno trasparente */
+  background:transparent;
   font-family:'DM Sans',sans-serif;
   display:flex;
   align-items:center;
@@ -26,7 +25,6 @@ body{
   overflow:hidden;
 }
 
-/* mini player */
 .player-wrap{
   position:relative;
   z-index:1;
@@ -35,6 +33,9 @@ body{
   border-radius:18px;
   background:var(--card);
   color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 /* cornice arcobaleno attorno al player */
@@ -57,7 +58,6 @@ body{
   100%{background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet, red);}
 }
 
-/* Label radio */
 .station-label{
   font-family:'Bebas Neue',sans-serif;
   font-size:20px;
@@ -73,11 +73,9 @@ body{
   aspect-ratio:1;
   border-radius:14px;
   overflow:hidden;
-  margin-bottom:16px;
+  margin-bottom:12px;
   background:var(--card);
 }
-
-/* cornice arcobaleno copertina */
 .cover-wrap::before{
   content:'';
   position:absolute;
@@ -99,7 +97,6 @@ body{
   opacity:0;
   transition:.5s;
 }
-
 .cover-fallback{
   position:absolute;
   inset:0;
@@ -107,20 +104,43 @@ body{
   align-items:center;
   justify-content:center;
 }
-
 .cover-fallback img{
   width:160px; 
   max-width:90%;
   object-fit:contain;
 }
 
-/* titolo e birrillo */
-.track-title{
-  font-family:'Bebas Neue',sans-serif;
+/* titolo scorrevole tra sbarre verticali */
+.marquee-container{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  margin-bottom:8px;
+}
+.marquee-container span{
+  font-weight:bold;
   font-size:18px;
-  text-align:center;
-  margin-bottom:4px;
+}
+.marquee-text-wrapper{
+  flex:1;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:0 6px;
+}
+.marquee-text{
+  display:inline-block;
+  white-space:nowrap;
+  animation: scrollTitle 12s linear infinite;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:16px;
   color:white;
+}
+
+@keyframes scrollTitle{
+  0%{transform:translateX(100%);}
+  100%{transform:translateX(-100%);}
 }
 
 .listeners-row{
@@ -130,18 +150,14 @@ body{
   gap:4px;
   font-size:10px;
   color:white;
-  margin-bottom:8px;
 }
 .listeners-row svg{color:white;opacity:.9;}
 #listeners-count{color:white;font-weight:500;}
-
-.status{text-align:center;font-size:10px;color:white;}
 </style>
 </head>
 <body>
 
 <div class="player-wrap">
-
   <div class="station-label">RadioCalabriaMiaWeb</div>
 
   <div class="cover-wrap">
@@ -151,7 +167,13 @@ body{
     </div>
   </div>
 
-  <div class="track-title" id="track-title">Caricamento…</div>
+  <div class="marquee-container">
+    <span>|</span>
+    <div class="marquee-text-wrapper">
+      <div class="marquee-text" id="marquee-title">Caricamento…</div>
+    </div>
+    <span>|</span>
+  </div>
 
   <div class="listeners-row">
     <svg width="10" height="10" viewBox="0 0 24 24">
@@ -159,18 +181,13 @@ body{
     </svg>
     <span id="listeners-count">—</span> ascoltatori in diretta
   </div>
-
-  <div class="status" id="status"></div>
-
 </div>
-
-<audio id="audio"></audio>
 
 <script>
 const INFO_URL = 'https://sp3.server89.com:7056/7.html';
 const coverImg = document.getElementById('cover-img');
 const coverFB = document.getElementById('cover-fallback');
-const titleEl = document.getElementById('track-title');
+const marqueeTitle = document.getElementById('marquee-title');
 const listCount = document.getElementById('listeners-count');
 
 async function fetchInfo(){
@@ -180,7 +197,7 @@ async function fetchInfo(){
     const plain=html.replace(/<[^>]+>/g,'').trim().split(',');
     listCount.textContent = plain[0] || '—';
     const rawTitle = plain.slice(6).join(',').trim();
-    if(rawTitle) titleEl.textContent = rawTitle;
+    if(rawTitle) marqueeTitle.textContent = rawTitle;
     fetchCover(rawTitle);
   }catch{}
   setTimeout(fetchInfo,20000);
