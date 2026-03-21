@@ -107,9 +107,32 @@ async function fetchCover(query){
     const d=await r.json();
     if(d.resultCount>0){
       const url=d.results[0].artworkUrl100.replace('100x100','600x600');
-      coverImg.src=url;coverImg.style.opacity='1';
+
+      // COVER PRINCIPALE
+      coverImg.src=url;
+      coverImg.style.opacity='1';
       coverFB.style.opacity='0';
+
+      // SFONDO ESTERNO (effetto blur come prima)
+      document.body.style.setProperty('--bg-image',`url(${url})`);
+      document.body.classList.add('bg-cover');
+
     } else {
+      // fallback logo
+      coverImg.style.opacity='0';
+      coverFB.style.opacity='1';
+
+      document.body.style.setProperty('--bg-image','url(https://i.postimg.cc/QM13LH1g/bbkkkk.png)');
+      document.body.classList.add('bg-cover');
+    }
+  }catch{
+    coverImg.style.opacity='0';
+    coverFB.style.opacity='1';
+
+    document.body.style.setProperty('--bg-image','url(https://i.postimg.cc/QM13LH1g/bbkkkk.png)');
+    document.body.classList.add('bg-cover');
+  }
+} else {
       coverImg.style.opacity='0';coverFB.style.opacity='1';
     }
   }catch{
