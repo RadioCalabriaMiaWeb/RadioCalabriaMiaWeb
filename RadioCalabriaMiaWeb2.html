@@ -36,10 +36,14 @@ body{
 .playing-badge{position:absolute;top:12px;right:12px;background:rgba(255,60,90,0.9);border-radius:20px;padding:5px 12px;font-size:10px;display:none;align-items:center;gap:6px;font-family:'Bebas Neue';}
 .playing-badge.visible{display:flex;}
 .track-title{font-family:'Bebas Neue';font-size:28px;text-align:center;margin-bottom:6px;}
+.listeners-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:20px;font-size:12px;color:var(--muted);}
+#listeners-count{color:var(--text);font-weight:500;}
 .waveform{display:flex;gap:3px;height:32px;margin-bottom:20px;}
 .bar{flex:1;background:var(--border);border-radius:2px;min-height:3px;}
 .controls{display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center;}
 .btn-play{width:60px;height:60px;border-radius:50%;background:var(--accent);border:none;font-size:24px;color:white;}
+.volume-wrap{display:flex;align-items:center;gap:10px;flex:1;}
+input[type=range]{flex:1;height:4px;cursor:pointer;}
 .status{text-align:center;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -47,6 +51,7 @@ body{
 
 <div class="player-wrap">
 <div class="station-label">RadioCalabriaMiaWeb</div>
+
 <div class="cover-wrap">
 <img id="cover-img" class="cover-img" src="">
 <div class="cover-fallback" id="cover-fallback">
@@ -54,11 +59,22 @@ body{
 </div>
 <div class="playing-badge" id="playing-badge">ON AIR</div>
 </div>
+
 <div class="track-title" id="track-title">Caricamento…</div>
+
+<div class="listeners-row">
+<span id="listeners-count">—</span> ascoltatori in diretta
+</div>
+
 <div class="waveform" id="waveform"></div>
+
 <div class="controls">
 <button class="btn-play" id="btn-play" onclick="togglePlay()">▶</button>
+<div class="volume-wrap">
+<input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" oninput="audio.volume=this.value">
 </div>
+</div>
+
 <div class="status" id="status">Caricamento...</div>
 </div>
 
@@ -66,26 +82,42 @@ body{
 
 <script>
 const STREAM_URL='https://sp3.server89.com:7056/stream';
+const INFO_URL='https://sp3.server89.com:7056/7.html';
+
 const audio=document.getElementById('audio');
 const btnPlay=document.getElementById('btn-play');
 const statusEl=document.getElementById('status');
 const playBadge=document.getElementById('playing-badge');
 const waveform=document.getElementById('waveform');
+const listCount=document.getElementById('listeners-count');
+
 let isPlaying=false;
+let pollTimer=null;
 
 for(let i=0;i<28;i++){const b=document.createElement('div');b.className='bar';waveform.appendChild(b);}
 
 function animateWaveform(){if(!isPlaying)return;document.querySelectorAll('.bar').forEach(b=>{b.style.height=(Math.random()*20+4)+'px';});requestAnimationFrame(animateWaveform);}
 
+function fetchInfo(){
+  fetch(INFO_URL)
+  .then(r=>r.text())
+  .then(html=>{
+    const plain=html.replace(/<[^>]+>/g,'').trim().split(',');
+    listCount.textContent=plain[0];
+  }).catch(()=>{});
+}
+
 function startPlayer(){
   audio.src=STREAM_URL;
-  audio.volume=0.8;
+  audio.volume=document.getElementById('volume').value;
   audio.play().then(()=>{
     isPlaying=true;
     btnPlay.textContent='❚❚';
     playBadge.classList.add('visible');
     animateWaveform();
     statusEl.textContent='In ascolto';
+    fetchInfo();
+    pollTimer=setInterval(fetchInfo,25000);
   }).catch(()=>{
     statusEl.textContent='Clicca per avviare la radio';
   });
@@ -98,6 +130,7 @@ function togglePlay(){
     btnPlay.textContent='▶';
     playBadge.classList.remove('visible');
     statusEl.textContent='In pausa';
+    clearInterval(pollTimer);
   } else {
     startPlayer();
   }
