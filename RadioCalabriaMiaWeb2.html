@@ -10,15 +10,13 @@
 :root {
   --bg:#0a0a0f; 
   --card:#1a1a24; 
-  --accent:#0066ff; /* colore play */
+  --accent:#0066ff;
   --accent2:#3399ff; 
   --text:#f0f0f5; 
   --muted:#6b6b80; 
   --border:#2a2a38;
 }
-
 *{margin:0;padding:0;box-sizing:border-box;}
-
 body{
   background:var(--bg);
   color:var(--text);
@@ -29,273 +27,92 @@ body{
   justify-content:center;
   overflow:hidden;
 }
-
-body.bg-cover::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:var(--bg-image);
-  background-size:cover;
-  background-position:center;
-  filter:blur(20px) brightness(0.3);
-  z-index:0;
-}
-
-.player-wrap{
-  position:relative;
-  z-index:1;
-  width:400px;
-  padding:20px;
-}
-
-.station-label{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:28px;
-  text-align:center;
-  margin-bottom:20px;
-  color:white;
-}
-
-.cover-wrap{
-  position:relative;
-  width:100%;
-  aspect-ratio:1;
-  border-radius:18px;
-  overflow:hidden;
-  margin-bottom:28px;
-  background:var(--card);
-}
-
-.cover-img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  opacity:0;
-  transition:.5s;
-}
-
-.cover-fallback{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.cover-fallback img{
-  width:280px; 
-  max-width:95%;
-  object-fit:contain;
-}
-
-.playing-badge{
-  position:absolute;
-  top:12px;right:12px;
-  background: rgba(255,60,90,0.9);
-  border-radius:20px;
-  padding:5px 12px;
-  font-size:10px;
-  display:none;
-  align-items:center;
-  gap:6px;
-  font-family:'Bebas Neue',sans-serif;
-}
+.player-wrap{position:relative;width:400px;padding:20px;}
+.station-label{font-family:'Bebas Neue';font-size:28px;text-align:center;margin-bottom:20px;}
+.cover-wrap{position:relative;width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;margin-bottom:28px;background:var(--card);}
+.cover-img{width:100%;height:100%;object-fit:contain;opacity:0;transition:.5s;}
+.cover-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.cover-fallback img{width:280px;max-width:95%;}
+.playing-badge{position:absolute;top:12px;right:12px;background:rgba(255,60,90,0.9);border-radius:20px;padding:5px 12px;font-size:10px;display:none;align-items:center;gap:6px;font-family:'Bebas Neue';}
 .playing-badge.visible{display:flex;}
-.dot{
-  width:6px;height:6px;
-  border-radius:50%;
-  background:white;
-  animation:pulse 1s ease infinite;
-}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-
-.track-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:28px;
-  text-align:center;
-  margin-bottom:6px;
-}
-
-.listeners-row{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  margin-bottom:20px;
-  font-size:12px;
-  color:var(--muted);
-}
-.listeners-row svg{color:var(--accent);opacity:.7;}
-#listeners-count{color:var(--text);font-weight:500;}
-
-.waveform{
-  display:flex;
-  align-items:center;
-  gap:3px;
-  height:32px;
-  margin-bottom:20px;
-}
-.bar{
-  flex:1;
-  background:var(--border);
-  border-radius:2px;
-  min-height:3px;
-  transition: height 0.1s ease;
-}
-
-.controls{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin-bottom:20px;
-  justify-content:center;
-}
-
-.btn-play{
-  width:60px;height:60px;
-  border-radius:50%;
-  background:var(--accent);
-  border:none;
-  cursor:pointer;
-  font-size:24px;
-  color:white;
-  flex-shrink:0;
-}
-
-.volume-wrap{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex:1; /* barra più lunga */
-}
-input[type=range]{flex:1;height:4px;cursor:pointer;}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  width:14px;height:14px;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-}
-
+.track-title{font-family:'Bebas Neue';font-size:28px;text-align:center;margin-bottom:6px;}
+.waveform{display:flex;gap:3px;height:32px;margin-bottom:20px;}
+.bar{flex:1;background:var(--border);border-radius:2px;min-height:3px;}
+.controls{display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center;}
+.btn-play{width:60px;height:60px;border-radius:50%;background:var(--accent);border:none;font-size:24px;color:white;}
 .status{text-align:center;font-size:12px;color:var(--muted);}
 </style>
 </head>
 <body>
 
 <div class="player-wrap">
-
-  <div class="station-label">RadioCalabriaMiaWeb</div>
-
-  <div class="cover-wrap">
-    <img id="cover-img" class="cover-img" src="">
-    <div class="cover-fallback" id="cover-fallback">
-      <img src="https://i.postimg.cc/QM13LH1g/bbkkkk.png" alt="Logo fallback">
-    </div>
-    <div class="playing-badge" id="playing-badge"><div class="dot"></div>ON AIR</div>
-  </div>
-
-  <div class="track-title" id="track-title">Caricamento…</div>
-
-  <div class="listeners-row">
-    <svg width="14" height="14" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-    <span id="listeners-count">—</span> ascoltatori in diretta
-  </div>
-
-  <div class="waveform" id="waveform"></div>
-
-  <div class="controls">
-    <button class="btn-play" id="btn-play" onclick="togglePlay()">▶</button>
-    <div class="volume-wrap">
-      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" oninput="audio.volume=this.value">
-    </div>
-  </div>
-
-  <div class="status" id="status">Premi play per ascoltare</div>
-
+<div class="station-label">RadioCalabriaMiaWeb</div>
+<div class="cover-wrap">
+<img id="cover-img" class="cover-img" src="">
+<div class="cover-fallback" id="cover-fallback">
+<img src="https://i.postimg.cc/QM13LH1g/bbkkkk.png">
+</div>
+<div class="playing-badge" id="playing-badge">ON AIR</div>
+</div>
+<div class="track-title" id="track-title">Caricamento…</div>
+<div class="waveform" id="waveform"></div>
+<div class="controls">
+<button class="btn-play" id="btn-play" onclick="togglePlay()">▶</button>
+</div>
+<div class="status" id="status">Caricamento...</div>
 </div>
 
 <audio id="audio"></audio>
 
 <script>
-const STREAM_URL  = 'https://sp3.server89.com:7056/stream';
-const INFO_URL    = 'https://sp3.server89.com:7056/7.html';
+const STREAM_URL='https://sp3.server89.com:7056/stream';
+const audio=document.getElementById('audio');
+const btnPlay=document.getElementById('btn-play');
+const statusEl=document.getElementById('status');
+const playBadge=document.getElementById('playing-badge');
+const waveform=document.getElementById('waveform');
+let isPlaying=false;
 
-const audio       = document.getElementById('audio');
-const btnPlay     = document.getElementById('btn-play');
-const titleEl     = document.getElementById('track-title');
-const statusEl    = document.getElementById('status');
-const coverImg    = document.getElementById('cover-img');
-const coverFB     = document.getElementById('cover-fallback');
-const playBadge   = document.getElementById('playing-badge');
-const listCount   = document.getElementById('listeners-count');
-const waveform    = document.getElementById('waveform');
+for(let i=0;i<28;i++){const b=document.createElement('div');b.className='bar';waveform.appendChild(b);}
 
-let isPlaying  = false;
-let lastTitle  = '';
-let pollTimer  = null;
+function animateWaveform(){if(!isPlaying)return;document.querySelectorAll('.bar').forEach(b=>{b.style.height=(Math.random()*20+4)+'px';});requestAnimationFrame(animateWaveform);}
 
-/* waveform */
-for(let i=0;i<28;i++){
-  const b=document.createElement('div');b.className='bar';waveform.appendChild(b);
+function startPlayer(){
+  audio.src=STREAM_URL;
+  audio.volume=0.8;
+  audio.play().then(()=>{
+    isPlaying=true;
+    btnPlay.textContent='❚❚';
+    playBadge.classList.add('visible');
+    animateWaveform();
+    statusEl.textContent='In ascolto';
+  }).catch(()=>{
+    statusEl.textContent='Clicca per avviare la radio';
+  });
 }
-function animateWaveform(){if(!isPlaying)return;
-  document.querySelectorAll('.bar').forEach(b=>{b.style.height=(Math.floor(Math.random()*20)+4)+'px';});
-  requestAnimationFrame(animateWaveform);
-}
 
-/* play/pause */
 function togglePlay(){
   if(isPlaying){
-    audio.pause();audio.src='';isPlaying=false;btnPlay.textContent='▶';
-    playBadge.classList.remove('visible');statusEl.textContent='In pausa';clearInterval(pollTimer);
+    audio.pause();
+    isPlaying=false;
+    btnPlay.textContent='▶';
+    playBadge.classList.remove('visible');
+    statusEl.textContent='In pausa';
   } else {
-    audio.src=STREAM_URL;audio.volume=document.getElementById('volume').value;
-    audio.play().then(()=>{
-      isPlaying=true;btnPlay.textContent='❚❚';
-      playBadge.classList.add('visible');animateWaveform();
-      statusEl.textContent='In ascolto';fetchInfo();pollTimer=setInterval(fetchInfo,25000);
-    }).catch(()=>{statusEl.textContent='Premi play per ascoltare';});
+    startPlayer();
   }
 }
 
-/* fetch info e copertina */
-async function fetchInfo(){
-  try{
-    const res = await fetch(INFO_URL);
-    const html=await res.text();
-    const plain=html.replace(/<[^>]+>/g,'').trim().split(',');
-    listCount.textContent=plain[0].trim();
-    const rawTitle=plain.slice(6).join(',').trim();
-    if(rawTitle && rawTitle!==lastTitle){
-      lastTitle=rawTitle;titleEl.textContent=rawTitle;fetchCover(rawTitle);
-    }
-  }catch{}
-  setTimeout(fetchInfo,20000);
-}
+/* AUTOPLAY */
+window.addEventListener('load',()=>{
+  startPlayer();
+});
 
-/* fetch cover */
-async function fetchCover(query){
-  try{
-    const r=await fetch('https://itunes.apple.com/search?term='+encodeURIComponent(query)+'&entity=musicTrack&limit=1');
-    const d=await r.json();
-    if(d.resultCount>0){
-      const url=d.results[0].artworkUrl100.replace('100x100','600x600');
-      coverImg.src=url;coverImg.style.opacity='1';
-      coverFB.style.opacity='0';
-      document.body.style.setProperty('--bg-image',`url(${url})`);
-      document.body.classList.add('bg-cover');
-    } else {
-      coverImg.style.opacity='0';coverFB.style.opacity='1';
-      document.body.style.setProperty('--bg-image','url(https://i.postimg.cc/QM13LH1g/bbkkkk.png)');
-      document.body.classList.add('bg-cover');
-    }
-  }catch{
-    coverImg.style.opacity='0';coverFB.style.opacity='1';
-    document.body.style.setProperty('--bg-image','url(https://i.postimg.cc/QM13LH1g/bbkkkk.png)');
-    document.body.classList.add('bg-cover');
-  }
-}
+/* fallback click */
+document.addEventListener('click',()=>{
+  if(!isPlaying){startPlayer();}
+},{once:true});
 
-fetchInfo();
 </script>
 </body>
 </html>
