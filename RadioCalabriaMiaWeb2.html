@@ -7,26 +7,53 @@
 <link rel="shortcut icon" href="https://i.postimg.cc/QM13LH1g/bbkkkk.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {--bg:#0a0a0f;--card:#1a1a24;--accent:#0066ff;--accent2:#3399ff;--text:#f0f0f5;--muted:#6b6b80;--border:#2a2a38;}
+:root {
+  --bg:#0a0a0f; 
+  --card:#1a1a24; 
+  --accent:#0066ff;
+  --accent2:#3399ff; 
+  --text:#f0f0f5; 
+  --muted:#6b6b80; 
+  --border:#2a2a38;
+}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans';display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden;}
-.player-wrap{width:400px;padding:20px;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+body.bg-cover::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:var(--bg-image);
+  background-size:cover;
+  background-position:center;
+  filter:blur(20px) brightness(0.3);
+  z-index:0;
+}
+.player-wrap{position:relative;z-index:1;width:400px;padding:20px;}
 .station-label{font-family:'Bebas Neue';font-size:28px;text-align:center;margin-bottom:20px;}
 .cover-wrap{position:relative;width:100%;aspect-ratio:1;border-radius:18px;overflow:hidden;margin-bottom:28px;background:var(--card);}
 .cover-img{width:100%;height:100%;object-fit:contain;opacity:0;transition:.5s;}
 .cover-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
 .cover-fallback img{width:280px;max-width:95%;}
-.playing-badge{position:absolute;top:12px;right:12px;background:rgba(255,60,90,0.9);border-radius:20px;padding:5px 12px;font-size:10px;display:none;font-family:'Bebas Neue';}
+.playing-badge{position:absolute;top:12px;right:12px;background:rgba(255,60,90,0.9);border-radius:20px;padding:5px 12px;font-size:10px;display:none;align-items:center;gap:6px;font-family:'Bebas Neue';}
 .playing-badge.visible{display:flex;}
 .track-title{font-family:'Bebas Neue';font-size:28px;text-align:center;margin-bottom:6px;}
-.listeners-row{display:flex;justify-content:center;gap:6px;margin-bottom:20px;font-size:12px;color:var(--muted);}
-#listeners-count{color:var(--text);}
-.waveform{display:flex;gap:3px;height:32px;margin-bottom:20px;}
-.bar{flex:1;background:var(--border);border-radius:2px;}
+.listeners-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:20px;font-size:12px;color:var(--muted);}
+#listeners-count{color:var(--text);font-weight:500;}
+.waveform{display:flex;align-items:center;gap:3px;height:32px;margin-bottom:20px;}
+.bar{flex:1;background:var(--border);border-radius:2px;min-height:3px;transition: height 0.1s ease;}
 .controls{display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center;}
-.btn-play{width:60px;height:60px;border-radius:50%;background:var(--accent);border:none;font-size:24px;color:white;}
-.volume-wrap{flex:1;}
-input[type=range]{width:100%;}
+.btn-play{width:60px;height:60px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;font-size:24px;color:white;}
+.volume-wrap{display:flex;align-items:center;gap:10px;flex:1;}
+input[type=range]{flex:1;height:4px;cursor:pointer;}
 .status{text-align:center;font-size:12px;color:var(--muted);}
 </style>
 </head>
@@ -40,7 +67,7 @@ input[type=range]{width:100%;}
 <div class="cover-fallback" id="cover-fallback">
 <img src="https://i.postimg.cc/QM13LH1g/bbkkkk.png">
 </div>
-<div class="playing-badge" id="playing-badge">ON AIR</div>
+<div class="playing-badge" id="playing-badge"><div class="dot"></div>ON AIR</div>
 </div>
 
 <div class="track-title" id="track-title">Caricamento…</div>
@@ -58,7 +85,8 @@ input[type=range]{width:100%;}
 </div>
 </div>
 
-<div class="status" id="status">Caricamento...</div>
+<div class="status" id="status">Premi play per ascoltare</div>
+
 </div>
 
 <audio id="audio"></audio>
@@ -69,34 +97,50 @@ const INFO_URL='https://sp3.server89.com:7056/7.html';
 
 const audio=document.getElementById('audio');
 const btnPlay=document.getElementById('btn-play');
-const statusEl=document.getElementById('status');
-const playBadge=document.getElementById('playing-badge');
-const waveform=document.getElementById('waveform');
-const listCount=document.getElementById('listeners-count');
 const titleEl=document.getElementById('track-title');
+const statusEl=document.getElementById('status');
 const coverImg=document.getElementById('cover-img');
 const coverFB=document.getElementById('cover-fallback');
+const playBadge=document.getElementById('playing-badge');
+const listCount=document.getElementById('listeners-count');
+const waveform=document.getElementById('waveform');
 
 let isPlaying=false;
-let pollTimer=null;
 let lastTitle='';
+let pollTimer=null;
 
-for(let i=0;i<28;i++){const b=document.createElement('div');b.className='bar';waveform.appendChild(b);}
+for(let i=0;i<28;i++){const b=document.createElement('div');b.className='bar';waveform.appendChild(b);} 
 
-function animateWaveform(){if(!isPlaying)return;document.querySelectorAll('.bar').forEach(b=>{b.style.height=(Math.random()*20+4)+'px';});requestAnimationFrame(animateWaveform);}
+function animateWaveform(){if(!isPlaying)return;document.querySelectorAll('.bar').forEach(b=>{b.style.height=(Math.random()*20+4)+'px';});requestAnimationFrame(animateWaveform);} 
+
+function togglePlay(){
+  if(isPlaying){
+    audio.pause();audio.src='';isPlaying=false;btnPlay.textContent='▶';
+    playBadge.classList.remove('visible');statusEl.textContent='In pausa';clearInterval(pollTimer);
+  } else {
+    startPlayer();
+  }
+}
+
+function startPlayer(){
+  audio.src=STREAM_URL;
+  audio.volume=document.getElementById('volume').value;
+  audio.play().then(()=>{
+    isPlaying=true;btnPlay.textContent='❚❚';
+    playBadge.classList.add('visible');animateWaveform();
+    statusEl.textContent='In ascolto';fetchInfo();pollTimer=setInterval(fetchInfo,25000);
+  }).catch(()=>{statusEl.textContent='Clicca play per ascoltare';});
+}
 
 async function fetchInfo(){
   try{
     const res=await fetch(INFO_URL);
     const html=await res.text();
     const plain=html.replace(/<[^>]+>/g,'').trim().split(',');
-    listCount.textContent=plain[0];
-
+    listCount.textContent=plain[0].trim();
     const rawTitle=plain.slice(6).join(',').trim();
     if(rawTitle && rawTitle!==lastTitle){
-      lastTitle=rawTitle;
-      titleEl.textContent=rawTitle;
-      fetchCover(rawTitle);
+      lastTitle=rawTitle;titleEl.textContent=rawTitle;fetchCover(rawTitle);
     }
   }catch{}
 }
@@ -107,74 +151,30 @@ async function fetchCover(query){
     const d=await r.json();
     if(d.resultCount>0){
       const url=d.results[0].artworkUrl100.replace('100x100','600x600');
-
-      // COVER PRINCIPALE
-      coverImg.src=url;
-      coverImg.style.opacity='1';
+      coverImg.src=url;coverImg.style.opacity='1';
       coverFB.style.opacity='0';
-
-      // SFONDO ESTERNO (effetto blur come prima)
       document.body.style.setProperty('--bg-image',`url(${url})`);
       document.body.classList.add('bg-cover');
-
     } else {
-      // fallback logo
-      coverImg.style.opacity='0';
-      coverFB.style.opacity='1';
-
+      coverImg.style.opacity='0';coverFB.style.opacity='1';
       document.body.style.setProperty('--bg-image','url(https://i.postimg.cc/QM13LH1g/bbkkkk.png)');
       document.body.classList.add('bg-cover');
     }
   }catch{
-    coverImg.style.opacity='0';
-    coverFB.style.opacity='1';
-
+    coverImg.style.opacity='0';coverFB.style.opacity='1';
     document.body.style.setProperty('--bg-image','url(https://i.postimg.cc/QM13LH1g/bbkkkk.png)');
     document.body.classList.add('bg-cover');
   }
-} else {
-      coverImg.style.opacity='0';coverFB.style.opacity='1';
-    }
-  }catch{
-    coverImg.style.opacity='0';coverFB.style.opacity='1';
-  }
 }
 
-function startPlayer(){
-  audio.src=STREAM_URL;
-  audio.volume=document.getElementById('volume').value;
-  audio.play().then(()=>{
-    isPlaying=true;
-    btnPlay.textContent='❚❚';
-    playBadge.classList.add('visible');
-    animateWaveform();
-    statusEl.textContent='In ascolto';
-    fetchInfo();
-    pollTimer=setInterval(fetchInfo,25000);
-  }).catch(()=>{
-    statusEl.textContent='Clicca per avviare la radio';
-  });
-}
-
-function togglePlay(){
-  if(isPlaying){
-    audio.pause();
-    isPlaying=false;
-    btnPlay.textContent='▶';
-    playBadge.classList.remove('visible');
-    statusEl.textContent='In pausa';
-    clearInterval(pollTimer);
-  } else {
-    startPlayer();
-  }
-}
-
+/* AUTOPLAY AGGIUNTO */
 window.addEventListener('load',()=>{startPlayer();});
 
 document.addEventListener('click',()=>{
   if(!isPlaying){startPlayer();}
 },{once:true});
 
+fetchInfo();
 </script>
 </body>
 </html>
